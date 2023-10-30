@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import React, { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
