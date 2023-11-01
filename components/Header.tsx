@@ -11,6 +11,8 @@ import { FaUserAlt } from 'react-icons/fa'
 import Button from './Button'
 import useAuthModal from '@/hooks/useAuthModal'
 import { useUser } from '@/hooks/useUser'
+import toast from 'react-hot-toast'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 interface HeaderProps {
   children: React.ReactNode
@@ -21,10 +23,18 @@ const Header: FC<HeaderProps> = ({ children, className }) => {
   const router = useRouter()
 
   const authModal = useAuthModal()
-
+  const supabaseClient = useSupabaseClient()
   const { user } = useUser()
 
-  const handleLogOut = () => {}
+  const handleLogout = async () => {
+    const { error } = await supabaseClient.auth.signOut();
+    // player.reset();
+    router.refresh();
+
+    if (error) {
+      toast.error(error.message);
+    }
+  }
 
   return (
     <div
@@ -103,7 +113,7 @@ const Header: FC<HeaderProps> = ({ children, className }) => {
         <div className="flex justify-between items-center gap-x-4">
           {user ? (
             <>
-              <Button onClick={handleLogOut} className="bg-white px-6 py-2">
+              <Button onClick={handleLogout} className="bg-white px-6 py-2">
                 Logout
               </Button>
               <Button
@@ -115,7 +125,6 @@ const Header: FC<HeaderProps> = ({ children, className }) => {
             </>
           ) : (
             <>
-              {' '}
               <div>
                 <Button
                   onClick={authModal.onOpen}
