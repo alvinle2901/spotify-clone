@@ -4,7 +4,6 @@ import type { FC } from 'react'
 import Image from 'next/image'
 import { FaPlay } from 'react-icons/fa'
 
-
 interface ListItemProps {
   image: string
   name: string
@@ -14,9 +13,13 @@ interface ListItemProps {
 const ListItem: FC<ListItemProps> = ({ image, name, href }) => {
   const router = useRouter()
 
+  const onClick = () => {
+    router.push(href)
+  }
+
   return (
     <button
-      // onClick={onClick}
+      onClick={onClick}
       className="
         relative 
         group 
@@ -35,10 +38,8 @@ const ListItem: FC<ListItemProps> = ({ image, name, href }) => {
       <div className="relative min-h-[64px] min-w-[64px]">
         <Image className="object-cover" src={image} fill alt="Image" />
       </div>
-      <p className="font-medium truncate py-5">
-        {name}
-      </p>
-      <div 
+      <p className="font-medium truncate py-5">{name}</p>
+      <div
         className="
           absolute 
           transition 
