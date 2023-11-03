@@ -1,13 +1,14 @@
-import useLoadImage from '@/hooks/useLoadImage';
+import useLoadImage from '@/hooks/useLoadImage'
 import { Song } from '@/types'
+import Image from 'next/image'
 import type { FC } from 'react'
 
 interface SongItemProps {
   data: Song
 }
 
-const SongItem: FC<SongItemProps> = ({data}) => {
-  const imagePath = useLoadImage(data);
+const SongItem: FC<SongItemProps> = ({ data }) => {
+  const imagePath = useLoadImage(data)
 
   return (
     <div
@@ -66,8 +67,7 @@ const SongItem: FC<SongItemProps> = ({data}) => {
           bottom-24 
           right-5
         "
-      >
-      </div>
+      ></div>
     </div>
   )
 }
