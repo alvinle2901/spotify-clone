@@ -8,10 +8,10 @@ import { RxCaretLeft, RxCaretRight } from 'react-icons/rx'
 import { HiHome } from 'react-icons/hi'
 import { BiSearch } from 'react-icons/bi'
 import { FaUserAlt } from 'react-icons/fa'
-import Button from './Button'
-import useAuthModal from '@/hooks/useAuthModal'
-import { useUser } from '@/hooks/useUser'
 import toast from 'react-hot-toast'
+import Button from './Button'
+import { useUser } from '@/hooks/useUser'
+import useAuthModal from '@/hooks/useAuthModal'
 import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
 interface HeaderProps {
@@ -27,12 +27,12 @@ const Header: FC<HeaderProps> = ({ children, className }) => {
   const { user } = useUser()
 
   const handleLogout = async () => {
-    const { error } = await supabaseClient.auth.signOut();
+    const { error } = await supabaseClient.auth.signOut()
     // player.reset();
-    router.refresh();
+    router.refresh()
 
     if (error) {
-      toast.error(error.message);
+      toast.error(error.message)
     }
   }
 
@@ -128,7 +128,7 @@ const Header: FC<HeaderProps> = ({ children, className }) => {
               <div>
                 <Button
                   onClick={authModal.onOpen}
-                  className="bg-transparent  text-neutral-300 font-medium"
+                  className="bg-transparent text-neutral-300 font-medium"
                 >
                   Sign up
                 </Button>
