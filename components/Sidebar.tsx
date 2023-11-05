@@ -44,11 +44,11 @@ const Sidebar: FC<SidebarProps> = ({ children, songs }) => {
             ))}
           </div>
         </Box>
-        <Box className="overflow-y-auto h-full">
+        <Box className="overflow-y-auto h-full w-full">
           <Library songs={songs} />
         </Box>
       </div>
-      <main>{children}</main>
+      <main className='w-full'>{children}</main>
     </div>
   )
 }
