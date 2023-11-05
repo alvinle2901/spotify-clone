@@ -5,7 +5,6 @@ import Image from 'next/image'
 import useLoadImage from '@/hooks/useLoadImage'
 import { Song } from '@/types'
 import usePlayer from '@/hooks/usePlayer'
-import PlayButton from './PlayButton'
 
 interface MediaItemProps {
   data: Song
